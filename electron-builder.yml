@@ -1,0 +1,26 @@
+appId: com.ai-screen-assistant.app
+productName: AI Screen Assistant
+copyright: Copyright 2024
+
+directories:
+  output: release
+  buildResources: resources
+
+files:
+  - dist/main/**/*
+  - dist/renderer/**/*
+  - package.json
+
+win:
+  target:
+    - nsis
+  icon: resources/icon.ico
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+
+extraMetadata:
+  main: dist/main/index.js

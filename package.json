@@ -1,0 +1,49 @@
+{
+  "name": "ai-screen-assistant",
+  "version": "1.0.0",
+  "description": "AI-powered screen assistant - capture questions and get instant answers",
+  "main": "dist/main/main/index.js",
+  "scripts": {
+    "dev": "npm run build && electron dist/main/main/index.js",
+    "dev:ui": "concurrently -k \"npm run dev:electron\" \"npm run dev:vite\"",
+    "dev:electron": "tsc -p tsconfig.main.json && powershell -Command \"Start-Sleep -Seconds 3\" && electron dist/main/main/index.js",
+    "dev:vite": "vite",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "dist": "npm run build && electron-builder",
+    "rebuild": "npx @electron/rebuild -f -w better-sqlite3"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "better-sqlite3": "^11.6.0",
+    "electron-store": "^10.0.0",
+    "openai": "^4.73.0",
+    "puppeteer-core": "^23.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.28.0",
+    "sharp": "^0.33.5",
+    "uuid": "^10.0.0",
+    "ws": "^8.21.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^10.0.0",
+    "@types/ws": "^8.18.1",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.0",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^31.7.0",
+    "electron-builder": "^25.1.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0"
+  }
+}
